@@ -97,7 +97,7 @@ void AOTMappedHeapWriter::init() {
     _native_pointers = new GrowableArrayCHeap<NativePointerInfo, mtClassShared>(2048);
     _source_objs = new GrowableArrayCHeap<oop, mtClassShared>(10000);
 
-    gG1GC_ONLY(uarantee(MIN_GC_REGION_ALIGNMENT <= G1HeapRegion::min_region_size_in_words() * HeapWordSize, "must be");)
+    G1GC_ONLY(guarantee(MIN_GC_REGION_ALIGNMENT <= G1HeapRegion::min_region_size_in_words() * HeapWordSize, "must be");)
 
     if (CDSConfig::old_cds_flags_used()) {
       // With the old CDS workflow, we can guatantee determninistic output: given
